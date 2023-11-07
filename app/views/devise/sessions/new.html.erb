@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col d-flex justify-content-center text-center mt-5">
+      <div class="col-10 col-md-6">
+        <div><%= image_tag 'logo.png', class: 'img-fluid', width: '120px' %></div>
+        <div class="col-12 text-center pb-2">
+          <p class="w-lg-50 pt-3 fs-3 text-purple">ログイン</p>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-center">
+      <div class="col-10 col-md-6">
+        <%= form_with model: @user, url: session_path(@user), local: true do |f| %>
+          <%#= render 'layouts/validation_error', instance: @user %>
+          <%= f.label :email, class: 'text-start text-main fw-bold mb-2 fs-6', value: 'メールアドレス' %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
+          <%= f.label :password, class: 'text-start text-main fw-bold mb-2 pt-4', value: 'パスワード' %>
+          <%= f.password_field :password, autofocus: true, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
+          <div class="my-5 text-center">
+            <button class="btn fw-bold rounded py-3 w-50 text-white" type="submit" style="background: #0097b2; border-style: solid;border-color: #8365FF;">ログイン</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
