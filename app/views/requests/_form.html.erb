@@ -1,0 +1,93 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col col-10 col-md-6 text-center mb-4" style="margin-top: 100px;">
+      <%#= displayed_svg 'camera.svg', alt: 'Pikawaka' %>
+      <span class="text-main fs-2 ms-2"><%= action_text %>作成</span>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-10 col-md-6">
+      <%= form_with model: request, local: true, class: 'text-center mb-5' do |f| %>
+        <%#= render 'layouts/validation_error', instance: request %>
+        <!--表示画像-->
+        <div class="img-select">
+          <div class="text-start">
+            <%= f.label :表示画像, class: 'fw-bold mb-3 text-main', value: '表示画像' %>
+            <span class="p_required">必須</span>
+          </div>
+          <%= f.file_field :posted_image %>
+        </div>
+        <!--投稿タイトル-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :投稿タイトル, class: 'title-p fw-bold text-main', value: '投稿タイトル' %>
+            <span class="p_required">必須</span>
+          </div>
+          <%= f.text_field :title, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
+        </div>
+        <!--イベントの説明-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :イベントの説明, class: 'title-p fw-bold text-main', value: 'イベントの説明' %>
+          </div>
+          <%= f.text_area :description, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
+        </div>
+        <!--カテゴリー-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :カテゴリー, class: 'fw-bold mb-3 text-main', value: 'カテゴリー' %>
+            <span class="p_required">必須</span>
+          </div>
+          <%#= f.select :category, ['J1', 'J2', 'J3', 'Jリーグ杯', '天皇杯', 'ACL', '親善試合'], include_blank: '選択してください' %>
+          <%= f.collection_select :category, Match.all, :category, :category, prompt: true %>
+        </div>
+        <!--試合日時-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :試合日時, class: 'title-p fw-bold text-main', value: '試合日時' %>
+          </div>
+            <%#= f.date_select :event_date, { order: [:year, :month, :day], include_blank: true } %>
+            <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+        </div>
+         <!--試合を選択-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :試合を選択, class: 'title-p fw-bold text-main', value: '試合を選択' %>
+          </div>
+            <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+        </div>
+        <!--試合会場-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :試合会場, class: 'title-p fw-bold text-main', value: '試合会場' %>
+          </div>
+            <%# f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+        </div>
+        <!--募集人数-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :募集人数, class: 'title-p fw-bold text-main', value: '募集人数' %>
+          </div>
+          <%= f.number_field :max_number, class: "hoge", min: 1, max: 10 %>
+        </div>
+        <!--チケット-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :チケット, class: 'fw-bold mb-3 text-main', value: 'チケット' %>
+          </div>
+          <%= f.select :tichet, ['チケットは各自で用意', '主催者が用意', '自分が用意', '現地購入における支払いは主催者が行う', '現地購入における支払いは自分が行う'], include_blank: '選択してください' %>
+        </div>
+        <!--集合時間-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :集合時間, class: 'title-p fw-bold text-main', value: '集合時間' %>
+          </div>
+          <%= f.time_select :meet_time, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
+        </div>
+        <div class="col-12 d-flex justify-content-center">
+          <%= f.submit '送信する', class: 'btn d-block rounded fw-bold box-shadow text-white mt-4 px-5 py-3 fs-6 bg-main' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

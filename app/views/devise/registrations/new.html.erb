@@ -47,10 +47,10 @@
           <div class="text-start">
             <%= f.label :birthday, class: 'title-p fw-bold text-main', value: '生年月日' %>
           </div>
+          <%#= text_field_tag 'birthday', nil, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3'%>
           <%= f.date_field :birthday, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
-          <!--<%#= f.date_select :birthday,{start_year: 1990, end_year: 2100, use_month_numbers: true}, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>-->
         </div>
-        <!--生年月日-->
+        <!--性別-->
         <div class="div-title mb-4">
           <div class="text-start">
             <%= f.label :gender, class: 'title-p fw-bold text-main', value: '性別' %>

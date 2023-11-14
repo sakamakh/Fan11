@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  category: MyString
+  type: 
+  home_team_name: MyString
+  away_team_name: MyString
+  home_team_logo: MyString
+  away_team_logo: MyString
+  match: 2023-11-13 08:13:39
+  stadium_name: MyString
+
+two:
+  category: MyString
+  type: 
+  home_team_name: MyString
+  away_team_name: MyString
+  home_team_logo: MyString
+  away_team_logo: MyString
+  match: 2023-11-13 08:13:39
+  stadium_name: MyString

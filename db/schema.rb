@@ -10,7 +10,43 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_31_041901) do
+ActiveRecord::Schema[7.1].define(version: 2023_11_14_045100) do
+  create_table "matches", charset: "utf8mb4", force: :cascade do |t|
+    t.string "category"
+    t.string "section"
+    t.string "home_team_name"
+    t.string "away_team_name"
+    t.string "home_team_logo"
+    t.string "away_team_logo"
+    t.datetime "match_date"
+    t.string "stadium_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", charset: "utf8mb4", force: :cascade do |t|
+    t.string "posted_image"
+    t.string "title"
+    t.text "description"
+    t.string "select_match"
+    t.integer "max_number"
+    t.string "tichet"
+    t.datetime "meet_time"
+    t.string "address"
+    t.string "category"
+    t.string "section"
+    t.string "home_team_name"
+    t.string "away_team_name"
+    t.string "home_team_logo"
+    t.string "away_team_logo"
+    t.datetime "match_date"
+    t.string "stadium_name"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -19,8 +55,14 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_31_041901) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "username", default: ""
+    t.string "birthday", default: ""
+    t.string "gender", default: ""
+    t.string "profile", default: ""
+    t.string "avatar", default: ""
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "posts", "users"
 end
