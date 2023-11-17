@@ -1,8 +1,9 @@
+<%= javascript_include_tag 'post' %>
 <div class="container">
   <div class="row d-flex justify-content-center">
     <div class="col col-10 col-md-6 text-center mb-4" style="margin-top: 100px;">
       <%#= displayed_svg 'camera.svg', alt: 'Pikawaka' %>
-      <span class="text-main fs-2 ms-2"><%= action_text %>作成</span>
+      <span class="text-main fs-2 ms-2">新規イベント作成</span>
     </div>
   </div>
   <div class="row d-flex justify-content-center">
@@ -39,7 +40,7 @@
             <span class="p_required">必須</span>
           </div>
           <%#= f.select :category, ['J1', 'J2', 'J3', 'Jリーグ杯', '天皇杯', 'ACL', '親善試合'], include_blank: '選択してください' %>
-          <%= f.collection_select :category, Match.all, :category, :category, prompt: true %>
+          <%= f.collection_select :category, Match.all, :category, :category, prompt: true%>
         </div>
         <!--試合日時-->
         <div class="div-title mt-4 mb-4">
@@ -47,21 +48,21 @@
             <%= f.label :試合日時, class: 'title-p fw-bold text-main', value: '試合日時' %>
           </div>
             <%#= f.date_select :event_date, { order: [:year, :month, :day], include_blank: true } %>
-            <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+            <%= f.collection_select :match_date, Match.all, :match_date, :match_date, prompt: true %>
         </div>
          <!--試合を選択-->
         <div class="div-title mt-4 mb-4">
           <div class="text-start">
             <%= f.label :試合を選択, class: 'title-p fw-bold text-main', value: '試合を選択' %>
           </div>
-            <%#= f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+            <%= f.collection_select :select_match, Post.all, :select_match, :select_match, prompt: true %>
         </div>
         <!--試合会場-->
         <div class="div-title mt-4 mb-4">
           <div class="text-start">
             <%= f.label :試合会場, class: 'title-p fw-bold text-main', value: '試合会場' %>
           </div>
-            <%# f.collection_select :保存先のカラム名, テーブル（モデル）名.all, :実際にDBに保存させるカラム名, :選択肢に用いるカラム名, include_blank: "選択して下さい" %>
+            <%= f.collection_select :stadium_name, Match.all, :stadium_name, :stadium_name, prompt: true %>
         </div>
         <!--募集人数-->
         <div class="div-title mt-4 mb-4">
@@ -84,8 +85,16 @@
           </div>
           <%= f.time_select :meet_time, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
         </div>
+          <!--集合場所-->
+        <div class="div-title mt-4 mb-4">
+          <div class="text-start">
+            <%= f.label :集合場所, class: 'title-p fw-bold text-main', value: '集合場所' %>
+          </div>
+          <%#= f.text_field :address, class: 'form-control py-md-3 rounded bg-white box-shadow mb-3' %>
+        </div>
+          <!--投稿ボタン-->
         <div class="col-12 d-flex justify-content-center">
-          <%= f.submit '送信する', class: 'btn d-block rounded fw-bold box-shadow text-white mt-4 px-5 py-3 fs-6 bg-main' %>
+          <%= f.submit '送信する', class: 'btn d-block rounded fw-bold box-shadow text-white mt-4 px-5 py-3 fs-6', style: 'background-color: #0097b2;'  %>
         </div>
       <% end %>
     </div>
